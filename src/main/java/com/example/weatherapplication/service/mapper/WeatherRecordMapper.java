@@ -2,11 +2,9 @@ package com.example.weatherapplication.service.mapper;
 
 import com.example.weatherapplication.dto.WeatherRecordDto;
 import com.example.weatherapplication.model.WeatherRecord;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
 public class WeatherRecordMapper {
     public WeatherRecordDto toDto(WeatherRecord weatherRecord) {
         return WeatherRecordDto.builder()
@@ -22,7 +20,6 @@ public class WeatherRecordMapper {
 
     public WeatherRecord toModel(WeatherRecordDto weatherRecordDto) {
         return WeatherRecord.builder()
-                .id(weatherRecordDto.getId())
                 .date(weatherRecordDto.getDate())
                 .lat(weatherRecordDto.getLat())
                 .lon(weatherRecordDto.getLon())

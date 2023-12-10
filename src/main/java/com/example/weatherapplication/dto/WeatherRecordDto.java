@@ -1,10 +1,9 @@
 package com.example.weatherapplication.dto;
 
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-import java.time.Instant;
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
@@ -13,11 +12,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class WeatherRecordDto {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
     private Long id;
     @NotNull
-    private Instant date;
+    private LocalDate date;
     @NotNull
     private Double lat;
     @NotNull
@@ -27,5 +25,5 @@ public class WeatherRecordDto {
     @NotNull
     private String state;
     @NotNull
-    private List<Integer> temperatures;
+    private List<Double> temperatures;
 }

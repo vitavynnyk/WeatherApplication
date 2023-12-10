@@ -1,10 +1,11 @@
 package com.example.weatherapplication.model;
 
+
+import com.example.weatherapplication.util.DoubleListConverter;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class WeatherRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotNull
-    private Instant date;
+    private LocalDate date;
     @NotNull
     private Double lat;
     @NotNull
@@ -30,8 +31,8 @@ public class WeatherRecord {
     @NotNull
     private String state;
     @NotNull
-    @ElementCollection(targetClass = Integer.class, fetch = FetchType.EAGER)
-    private List<Integer> temperatures;
+    @Convert(converter = DoubleListConverter.class)
+    private List<Double> temperatures;
     @NotNull
     private Integer version;
 
