@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: my-postgres-container
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: hillel
+    ports:
+      - "5432:5432"
+#    networks:
+#      - my-network
+
+  my-java-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: my-java-app-container
+    depends_on:
+      - postgres
+    network_mode: "host"
+#    environment:
+#      POSTGRES_URL: jdbc:postgresql://localhost:5432/postgres
+#    networks:
+#      - my-network
+
+
+#networks:
+#  my-network:
+#    driver: bridge
